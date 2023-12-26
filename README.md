@@ -1,5 +1,16 @@
 # BingoRunner
 
+This project was created because my family wanted to do Danish styled bingo for
+christmas. It took me about 2 hours to create.
+It pulls a number from 1 to 90 (inclusive) when clicking on pull, and then that
+number is not pulled again until resetting.
+This results in the available pool being reduced by 1.
+When all available numbers are pulled, you can reset the game back to its original
+state.
+Each number pull is spoken aloud using WebSpeech API.
+
+Pulled numbers can be seen in the box below the current pulled ball.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.8.
 
 ## Development server
