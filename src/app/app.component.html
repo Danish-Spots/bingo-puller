@@ -1,0 +1,48 @@
+<div class="game-container">
+  <h1 class="header">Welcome to bingo number puller</h1>
+  <!-- available values -->
+  <p class="remaining-text" *ngIf="showResetButton$ | async; else remaining">
+    No more balls to pull, reset the game to start again
+  </p>
+  <ng-template #remaining>
+    <p class="remaining-text">
+      Remaining available balls: {{ remainingValues$ | async }}
+    </p>
+  </ng-template>
+  <div class="button-container">
+    <button
+      *ngIf="showResetButton$ | async; else pull"
+      class="pull-button"
+      mat-button
+      color="primary"
+      (click)="resetGame()"
+    >
+      Reset
+    </button>
+    <ng-template #pull>
+      <button
+        class="pull-button"
+        mat-button
+        color="primary"
+        (click)="pullBall()"
+      >
+        Pull
+      </button>
+    </ng-template>
+  </div>
+  <!-- current value -->
+  <app-ball
+    class="current-value"
+    *ngIf="currentValue$ | async as currentValue; else empty"
+    [value]="currentValue"
+    ballSize="big-ball"
+  ></app-ball>
+  <ng-template #empty><div class="empty-value"></div></ng-template>
+  <!-- pulled values -->
+  <div class="pulled-values-container">
+    <app-ball
+      *ngFor="let value of pulledValues$ | async"
+      [value]="value"
+    ></app-ball>
+  </div>
+</div>
